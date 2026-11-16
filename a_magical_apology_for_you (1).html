@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>A Magical Apology For You 💌✨</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .disney-title {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    .handwritten {
+      font-family: 'Caveat', cursive;
+    }
+
+    /* Twinkling Starfield */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.25; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+    .star-dot {
+      position: fixed;
+      background: #fffbeb;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: twinkle var(--dur, 3s) infinite ease-in-out;
+      animation-delay: var(--delay, 0s);
+    }
+
+    /* Floating Character */
+    @keyframes floatChar {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1.5deg); }
+    }
+    .float-char {
+      animation: floatChar 3.4s infinite ease-in-out;
+    }
+
+    /* Bouncy Click */
+    @keyframes squishBounce {
+      0% { transform: scale(1, 1); }
+      25% { transform: scale(1.14, 0.86) translateY(8px); }
+      55% { transform: scale(0.92, 1.1) translateY(-16px); }
+      80% { transform: scale(1.04, 0.96); }
+      100% { transform: scale(1, 1); }
+    }
+    .animate-bounce-click {
+      animation: squishBounce 0.6s cubic-bezier(0.28, 0.84, 0.42, 1);
+    }
+
+    /* Cat Ear-Pulling & Bouncing Animation */
+    @keyframes catEarPull {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(-2deg); }
+    }
+    @keyframes leftEarMove {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(-18deg) translateY(-3px); }
+    }
+    @keyframes rightEarMove {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(18deg) translateY(-3px); }
+    }
+    .cat-container {
+      animation: catEarPull 1.8s infinite ease-in-out;
+    }
+    .cat-left-ear {
+      transform-origin: 60px 50px;
+      animation: leftEarMove 1.8s infinite ease-in-out;
+    }
+    .cat-right-ear {
+      transform-origin: 140px 50px;
+      animation: rightEarMove 1.8s infinite ease-in-out;
+    }
+
+    /* Flying Heart Animation for Mini-Game */
+    @keyframes flyHeart {
+      0% { transform: translateX(-10vw) translateY(0px) scale(0.9); }
+      50% { transform: translateX(45vw) translateY(-25px) scale(1.15); }
+      100% { transform: translateX(105vw) translateY(10px) scale(0.9); }
+    }
+    .flying-heart {
+      position: absolute;
+      cursor: pointer;
+      animation: flyHeart 4.2s infinite linear;
+      user-select: none;
+      transition: transform 0.2s;
+    }
+    .flying-heart:hover {
+      transform: scale(1.35);
+    }
+
+    /* Polaroid Flip Cards */
+    .perspective-1000 {
+      perspective: 1000px;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-style: preserve-3d;
+    }
+    .flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-front, .flip-back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .flip-back {
+      transform: rotateY(180deg);
+    }
+
+    /* Parchment Scroll */
+    .parchment-scroll {
+      background: linear-gradient(180deg, #fffdf7 0%, #fef6e4 55%, #fcedd1 100%);
+      box-shadow: 0 18px 45px rgba(180, 83, 9, 0.14), inset 0 0 28px rgba(245, 158, 11, 0.14);
+    }
+
+    /* Pixie Dust Sparkle */
+    @keyframes pixieSparkle {
+      0%, 100% { transform: scale(0.5) translateY(0); opacity: 0.2; }
+      50% { transform: scale(1.3) translateY(-10px); opacity: 1; }
+    }
+    .pixie-star {
+      animation: pixieSparkle var(--sdur, 2.2s) infinite ease-in-out;
+      animation-delay: var(--sdelay, 0s);
+    }
+
+    /* Sky Flower Bloom Rain */
+    @keyframes flowerBloomFall {
+      0% { transform: translateY(-12vh) translateX(0px) rotate(0deg) scale(0.4); opacity: 0; }
+      12% { opacity: 1; transform: translateY(2vh) translateX(12px) rotate(45deg) scale(1.08); }
+      50% { transform: translateY(50vh) translateX(-25px) rotate(190deg) scale(1); }
+      100% { transform: translateY(110vh) translateX(20px) rotate(360deg) scale(0.95); opacity: 0.85; }
+    }
+    .blooming-flower {
+      position: fixed;
+      top: -50px;
+      pointer-events: none;
+      z-index: 60;
+      animation: flowerBloomFall var(--fdur, 5.5s) ease-in-out forwards;
+    }
+
+    /* Castle Fireworks */
+    @keyframes fireworkPop {
+      0% { transform: scale(0.1); opacity: 1; }
+      75% { opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .firework-ring {
+      transform-origin: center;
+      animation: fireworkPop 1.4s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#1a153a] via-[#2d2459] to-[#492c68] text-slate-800 min-h-screen relative selection:bg-pink-200 selection:text-rose-900">
+
+  <!-- Starfield Container -->
+  <div id="starfield-container" class="fixed inset-0 pointer-events-none z-0"></div>
+
+  <!-- Flower Sky Layer -->
+  <div id="flower-sky-layer" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+  <!-- ========================================================= -->
+  <!-- TOP HEADER & CONTROLS                                     -->
+  <!-- ========================================================= -->
+  <header class="sticky top-0 z-40 w-full bg-[#191336]/85 backdrop-blur-md border-b border-white/15 px-3 sm:px-6 py-3 shadow-lg">
+    <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🏰</span>
+        <div>
+          <h1 class="text-base sm:text-xl font-bold text-amber-200 tracking-wide leading-tight">
+            A Magical Apology For You
+          </h1>
+          <p class="text-[11px] sm:text-xs text-pink-200/80 font-medium">
+            7 Chapters of My Sincere Heart 💌
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button id="btn-music" class="px-3 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 text-amber-100 text-xs font-bold flex items-center gap-1.5 transition-all active:scale-95 cursor-pointer" title="Toggle Music Box Lullaby">
+          <span id="music-icon">🎵</span>
+          <span id="music-label" class="hidden sm:inline">Music: Off</span>
+        </button>
+
+        <button id="btn-open-customizer" class="px-3.5 sm:px-4 py-2 rounded-full bg-gradient-to-r from-amber-400 to-rose-400 hover:from-amber-300 hover:to-rose-300 text-slate-950 text-xs sm:text-sm font-bold shadow-[0_4px_15px_rgba(251,191,36,0.4)] flex items-center gap-1.5 transition-all hover:scale-105 active:scale-95 cursor-pointer">
+          <span>📸 Customize Letter & Photos</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main 7 Chapters Container -->
+  <main class="relative z-10 max-w-3xl mx-auto px-4 pt-8 pb-24 space-y-16">
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 1: CLASSIC MICKEY MOUSE GREETING                  -->
+    <!-- ========================================================= -->
+    <section id="chapter-1" class="bg-white/10 backdrop-blur-md rounded-[2.25rem] border border-white/20 p-6 sm:p-8 text-center shadow-2xl">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-rose-500/25 border border-rose-300/30 text-pink-100 text-xs font-bold uppercase tracking-wider mb-3">
+        Chapter 1 • A Peace Offering From Mickey
+      </span>
+
+      <div class="max-w-md mx-auto bg-white rounded-2xl px-5 py-3 shadow-md relative mb-3">
+        <p id="mickey-speech" class="text-sm sm:text-base font-bold text-rose-600">
+          "Hi... I know I made a mistake that shouldn't have happened. Tap me to open my heart 🥺🌹"
+        </p>
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white rotate-45"></div>
+      </div>
+
+      <div id="mickey-btn" class="w-56 h-56 sm:w-64 sm:h-64 mx-auto cursor-pointer select-none group relative" title="Tap Mickey!">
+        <svg viewBox="0 0 280 260" class="w-full h-full overflow-visible float-char drop-shadow-[0_14px_24px_rgba(0,0,0,0.4)]">
+          <!-- Shoes -->
+          <ellipse cx="108" cy="235" rx="26" ry="13" fill="#ffcc00" stroke="#111" stroke-width="3.5" />
+          <ellipse cx="172" cy="235" rx="26" ry="13" fill="#ffcc00" stroke="#111" stroke-width="3.5" />
+          <!-- Legs -->
+          <rect x="113" y="208" width="12" height="22" rx="6" fill="#111" />
+          <rect x="155" y="208" width="12" height="22" rx="6" fill="#111" />
+          <!-- Red Shorts -->
+          <path d="M 100 160 Q 140 150 180 160 L 185 198 Q 185 212 162 212 L 118 212 Q 95 212 95 198 Z" fill="#111" />
+          <path d="M 98 178 Q 140 174 182 178 L 184 200 Q 184 212 162 212 L 118 212 Q 96 212 96 200 Z" fill="#e60012" stroke="#111" stroke-width="3.5" />
+          <ellipse cx="124" cy="194" rx="6" ry="9" fill="#fff" stroke="#111" stroke-width="2.2" />
+          <ellipse cx="156" cy="194" rx="6" ry="9" fill="#fff" stroke="#111" stroke-width="2.2" />
+
+          <!-- Ears -->
+          <circle cx="78" cy="48" r="36" fill="#111" />
+          <circle cx="202" cy="48" r="36" fill="#111" />
+          <!-- Head -->
+          <circle cx="140" cy="108" r="56" fill="#111" />
+          <!-- Muzzle -->
+          <path d="M 140 68 C 120 68, 110 82, 110 94 C 94 96, 84 110, 88 126 C 92 144, 114 154, 140 154 C 166 154, 188 144, 192 126 C 196 110, 186 96, 170 94 C 170 82, 160 68, 140 68 Z" fill="#ffebd0" stroke="#111" stroke-width="3" />
+          <!-- Rosy Cheeks -->
+          <ellipse cx="104" cy="128" rx="12" ry="8" fill="#ff6b8b" opacity="0.6" />
+          <ellipse cx="176" cy="128" rx="12" ry="8" fill="#ff6b8b" opacity="0.6" />
+          <!-- Eyes -->
+          <path d="M 112 84 Q 120 78 128 86" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" />
+          <path d="M 168 84 Q 160 78 152 86" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" />
+          <ellipse cx="124" cy="104" rx="9" ry="13" fill="#fff" stroke="#111" stroke-width="2.6" />
+          <ellipse cx="156" cy="104" rx="9" ry="13" fill="#fff" stroke="#111" stroke-width="2.6" />
+          <ellipse cx="125" cy="106" rx="5.5" ry="8.5" fill="#111" />
+          <ellipse cx="155" cy="106" rx="5.5" ry="8.5" fill="#111" />
+          <circle cx="123" cy="102" r="2.8" fill="#fff" />
+          <circle cx="153" cy="102" r="2.8" fill="#fff" />
+          <!-- Nose & Smile -->
+          <ellipse cx="140" cy="122" rx="9.5" ry="6.5" fill="#111" />
+          <path d="M 126 138 Q 140 146 154 138" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" />
+          <!-- Rose Offering -->
+          <path d="M 100 168 Q 80 182 96 195" fill="none" stroke="#111" stroke-width="8.5" stroke-linecap="round" />
+          <ellipse cx="98" cy="196" rx="12" ry="9" fill="#fff" stroke="#111" stroke-width="2.8" />
+          <path d="M 180 168 Q 206 172 212 150" fill="none" stroke="#111" stroke-width="8.5" stroke-linecap="round" />
+          <line x1="212" y1="175" x2="212" y2="120" stroke="#16a34a" stroke-width="4.5" stroke-linecap="round" />
+          <circle cx="212" cy="115" r="13" fill="#e11d48" />
+          <ellipse cx="212" cy="150" rx="12" ry="9" fill="#fff" stroke="#111" stroke-width="2.8" />
+        </svg>
+      </div>
+
+      <div class="mt-2">
+        <a href="#chapter-2" class="px-6 py-3 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Next Chapter ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 2: INTERACTIVE FLYING HEART SHOOTING MINI-GAME    -->
+    <!-- ========================================================= -->
+    <section id="chapter-2" class="bg-gradient-to-br from-rose-600/25 via-pink-600/20 to-purple-600/25 backdrop-blur-md rounded-[2.25rem] border-2 border-pink-300/40 p-6 sm:p-8 text-center shadow-2xl relative overflow-hidden">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-pink-500/30 border border-pink-300/40 text-pink-100 text-xs font-bold uppercase tracking-wider mb-2">
+        Chapter 2 • Please Don't Be Upset With Me Anymore 🥺😭
+      </span>
+
+      <h2 class="text-xl sm:text-2xl font-bold text-pink-100 mb-2">
+        Shoot & Catch My Heart! 🎯❤️
+      </h2>
+      <p class="text-xs sm:text-sm text-pink-200/90 max-w-md mx-auto mb-4">
+        Tap the flying hearts below to collect them and prove my remorse. <br/>
+        <strong class="text-amber-200">"Please don't be upset with me anymore 🥺😭"</strong>
+      </p>
+
+      <!-- Mini-Game Arena -->
+      <div id="heart-game-arena" class="relative w-full h-44 sm:h-52 bg-black/20 rounded-2xl border border-white/20 overflow-hidden mb-4 flex items-center justify-center">
+        <!-- Flying hearts generated by JS -->
+        <div id="score-display" class="absolute top-3 right-3 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-amber-200 border border-white/20 z-10">
+          Hearts Collected: <span id="heart-count">0</span> / 5 🎯
+        </div>
+        <div id="game-win-msg" class="hidden absolute inset-0 bg-pink-950/85 backdrop-blur-md flex flex-col items-center justify-center text-center p-4 z-20">
+          <span class="text-3xl mb-1">🎉❤️</span>
+          <h3 class="text-lg sm:text-xl font-bold text-amber-200">All Hearts Captured!</h3>
+          <p class="text-xs text-pink-100 mt-1">My heart beats only for you. Let's move to the next chapter!</p>
+        </div>
+      </div>
+
+      <div>
+        <a href="#chapter-3" class="px-6 py-2.5 rounded-full bg-pink-500 hover:bg-pink-600 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Cat Chapter ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 3: ANIMATED CUTE CAT BOUNCING & PULLING EARS       -->
+    <!-- ========================================================= -->
+    <section id="chapter-3" class="bg-gradient-to-br from-amber-500/20 via-rose-500/15 to-purple-600/20 backdrop-blur-md rounded-[2.25rem] border-2 border-amber-300/40 p-6 sm:p-8 text-center shadow-2xl">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-amber-500/30 border border-amber-300/40 text-amber-100 text-xs font-bold uppercase tracking-wider mb-3">
+        Chapter 3 • Bouncing Remorseful Cat 🐾
+      </span>
+
+      <div class="max-w-md mx-auto bg-white/90 rounded-2xl px-5 py-3 shadow-md relative mb-4">
+        <p class="text-sm sm:text-base font-bold text-rose-600">
+          "I'm pulling my ears and bouncing up and down, begging for your forgiveness 🥺🐾"
+        </p>
+        <div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white/90 rotate-45"></div>
+      </div>
+
+      <!-- Animated Cute Cat with Active Ear-Pulling & Bouncing -->
+      <div class="w-48 h-48 sm:w-56 sm:h-56 mx-auto cursor-pointer select-none relative cat-container">
+        <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.35)]">
+          <!-- Body -->
+          <ellipse cx="100" cy="140" rx="42" ry="38" fill="#fcd34d" stroke="#b45309" stroke-width="3" />
+          <ellipse cx="80" cy="172" rx="14" ry="10" fill="#fef3c7" stroke="#b45309" stroke-width="2.5" />
+          <ellipse cx="120" cy="172" rx="14" ry="10" fill="#fef3c7" stroke="#b45309" stroke-width="2.5" />
+          
+          <!-- Head -->
+          <circle cx="100" cy="95" r="48" fill="#fcd34d" stroke="#b45309" stroke-width="3" />
+          
+          <!-- Animated Left Ear & Right Ear -->
+          <g class="cat-left-ear">
+            <polygon points="62,65 52,25 85,48" fill="#fcd34d" stroke="#b45309" stroke-width="2.8" />
+            <polygon points="63,60 57,34 78,48" fill="#f472b6" />
+          </g>
+          <g class="cat-right-ear">
+            <polygon points="138,65 148,25 115,48" fill="#fcd34d" stroke="#b45309" stroke-width="2.8" />
+            <polygon points="137,60 143,34 122,48" fill="#f472b6" />
+          </g>
+
+          <!-- Eyes & Pleading Tears -->
+          <circle cx="82" cy="90" r="9" fill="#1e293b" />
+          <circle cx="118" cy="90" r="9" fill="#1e293b" />
+          <circle cx="80" cy="87" r="3" fill="#ffffff" />
+          <circle cx="116" cy="87" r="3" fill="#ffffff" />
+          <path d="M 72 76 Q 82 82 92 76" fill="none" stroke="#b45309" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M 128 76 Q 118 82 108 76" fill="none" stroke="#b45309" stroke-width="2.5" stroke-linecap="round" />
+          <ellipse cx="100" cy="103" rx="5" ry="3.5" fill="#e11d48" />
+          <path d="M 94 110 Q 100 116 106 110" fill="none" stroke="#1e1b18" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M 76 98 Q 74 108 78 110 Q 82 108 76 98 Z" fill="#38bdf8" />
+          <path d="M 124 98 Q 122 108 126 110 Q 130 108 124 98 Z" fill="#38bdf8" />
+
+          <!-- Hands Actively Pulling Ears -->
+          <ellipse cx="60" cy="46" rx="11" ry="8.5" fill="#fcd34d" stroke="#b45309" stroke-width="2" />
+          <ellipse cx="140" cy="46" rx="11" ry="8.5" fill="#fcd34d" stroke="#b45309" stroke-width="2" />
+        </svg>
+      </div>
+
+      <div class="mt-4">
+        <a href="#chapter-4" class="px-6 py-2.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Memories ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 4: PHOTO MEMORY SCRAPBOOK (STITCH & POOH CARDS)   -->
+    <!-- ========================================================= -->
+    <section id="chapter-4" class="bg-white/95 rounded-[2.25rem] border-4 border-sky-200 p-6 sm:p-8 shadow-2xl">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pb-5 border-b-2 border-dashed border-sky-100">
+        <div class="flex items-center gap-3">
+          <svg viewBox="0 0 110 100" class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 float-char">
+            <ellipse cx="22" cy="42" rx="18" ry="10" transform="rotate(-25 22 42)" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2.5" />
+            <ellipse cx="22" cy="42" rx="11" ry="5" transform="rotate(-25 22 42)" fill="#f472b6" />
+            <ellipse cx="88" cy="42" rx="18" ry="10" transform="rotate(25 88 42)" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2.5" />
+            <ellipse cx="88" cy="42" rx="11" ry="5" transform="rotate(25 88 42)" fill="#f472b6" />
+            <ellipse cx="55" cy="54" rx="28" ry="24" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2.5" />
+            <ellipse cx="43" cy="52" rx="9" ry="11" fill="#93c5fd" />
+            <ellipse cx="67" cy="52" rx="9" ry="11" fill="#93c5fd" />
+            <circle cx="44" cy="52" r="6" fill="#0f172a" />
+            <circle cx="66" cy="52" r="6" fill="#0f172a" />
+            <ellipse cx="55" cy="60" rx="7" ry="5" fill="#1d4ed8" />
+            <path d="M 43 69 Q 55 76 67 69" fill="none" stroke="#1e3a8a" stroke-width="2.5" stroke-linecap="round" />
+          </svg>
+          <div>
+            <span class="inline-block px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-700 text-xs font-bold">
+              Chapter 4 • Ohana Memory Scrapbook
+            </span>
+            <h2 class="text-xl sm:text-2xl font-bold text-slate-800 mt-0.5">
+              "Nobody gets left behind or forgotten."
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 font-semibold">
+              Tap any photo to flip • Tap <span class="text-rose-500 font-bold">+ Add Photo</span> to personalize!
+            </p>
+          </div>
+        </div>
+
+        <svg viewBox="0 0 100 100" class="w-16 h-16 sm:w-20 sm:h-20 shrink-0 hidden sm:block float-char">
+          <circle cx="30" cy="26" r="11" fill="#fbbf24" stroke="#92400e" stroke-width="2.5" />
+          <circle cx="70" cy="26" r="11" fill="#fbbf24" stroke="#92400e" stroke-width="2.5" />
+          <circle cx="50" cy="52" r="28" fill="#fbbf24" stroke="#92400e" stroke-width="2.5" />
+          <circle cx="41" cy="48" r="3" fill="#451a03" />
+          <circle cx="59" cy="48" r="3" fill="#451a03" />
+          <ellipse cx="50" cy="56" rx="5" ry="3.5" fill="#451a03" />
+          <path d="M 42 64 Q 50 70 58 64" fill="none" stroke="#451a03" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M 28 74 Q 50 68 72 74 L 76 92 L 24 92 Z" fill="#ef4444" stroke="#991b1b" stroke-width="2.2" />
+        </svg>
+      </div>
+
+      <!-- 3 Polaroid Flip Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mt-6">
+        
+        <div class="memory-card perspective-1000 h-80 cursor-pointer" data-card="0">
+          <div class="flip-inner">
+            <div class="flip-front bg-white rounded-2xl p-3 pb-4 border-2 border-pink-200 shadow-md flex flex-col justify-between">
+              <div class="relative w-full h-52 rounded-xl overflow-hidden bg-pink-50 border border-pink-100">
+                <img id="photo-img-0" src="https://placehold.co/400x400/ffe4e6/e11d48?text=Our+Favorite+Day+%F0%9F%93%B8" alt="Memory 1" class="w-full h-full object-cover" />
+                <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/65 hover:bg-rose-600 text-white text-[11px] font-bold backdrop-blur-sm cursor-pointer transition-colors">
+                  + Add Photo
+                  <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="0" />
+                </label>
+              </div>
+              <div class="pt-2 text-center">
+                <p class="handwritten text-xl font-bold text-slate-700 leading-tight">My favorite smile in the world</p>
+                <span class="text-[11px] text-rose-400 font-bold">Tap card to read note ↻</span>
+              </div>
+            </div>
+            <div class="flip-back bg-gradient-to-br from-rose-50 to-amber-50 rounded-2xl p-5 border-2 border-rose-300 shadow-md flex flex-col items-center justify-center text-center">
+              <span class="text-2xl mb-2">💌</span>
+              <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                "Every single moment with you is my favorite memory. Seeing you happy means everything to me."
+              </p>
+              <span class="mt-4 text-xs text-rose-500 font-bold">Tap to flip back ↺</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card perspective-1000 h-80 cursor-pointer" data-card="1">
+          <div class="flip-inner">
+            <div class="flip-front bg-white rounded-2xl p-3 pb-4 border-2 border-sky-200 shadow-md flex flex-col justify-between">
+              <div class="relative w-full h-52 rounded-xl overflow-hidden bg-sky-50 border border-sky-100">
+                <img id="photo-img-1" src="https://placehold.co/400x400/e0f2fe/0284c7?text=Silly+Moments+%F0%9F%92%99" alt="Memory 2" class="w-full h-full object-cover" />
+                <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/65 hover:bg-sky-600 text-white text-[11px] font-bold backdrop-blur-sm cursor-pointer transition-colors">
+                  + Add Photo
+                  <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="1" />
+                </label>
+              </div>
+              <div class="pt-2 text-center">
+                <p class="handwritten text-xl font-bold text-slate-700 leading-tight">Even when I'm a troublemaker</p>
+                <span class="text-[11px] text-sky-500 font-bold">Tap card to read note ↻</span>
+              </div>
+            </div>
+            <div class="flip-back bg-gradient-to-br from-sky-50 to-indigo-50 rounded-2xl p-5 border-2 border-sky-300 shadow-md flex flex-col items-center justify-center text-center">
+              <span class="text-2xl mb-2">💙</span>
+              <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                "Like Stitch, I can be clumsy and make mistakes—but my heart is always 100% loyal to you."
+              </p>
+              <span class="mt-4 text-xs text-sky-600 font-bold">Tap to flip back ↺</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="memory-card perspective-1000 h-80 cursor-pointer" data-card="2">
+          <div class="flip-inner">
+            <div class="flip-front bg-white rounded-2xl p-3 pb-4 border-2 border-amber-200 shadow-md flex flex-col justify-between">
+              <div class="relative w-full h-52 rounded-xl overflow-hidden bg-amber-50 border border-amber-100">
+                <img id="photo-img-2" src="https://placehold.co/400x400/fef3c7/d97706?text=Us+Together+%E2%9C%A8" alt="Memory 3" class="w-full h-full object-cover" />
+                <label onclick="event.stopPropagation()" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full bg-black/65 hover:bg-amber-600 text-white text-[11px] font-bold backdrop-blur-sm cursor-pointer transition-colors">
+                  + Add Photo
+                  <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="2" />
+                </label>
+              </div>
+              <div class="pt-2 text-center">
+                <p class="handwritten text-xl font-bold text-slate-700 leading-tight">You are my happiest place</p>
+                <span class="text-[11px] text-amber-600 font-bold">Tap card to read note ↻</span>
+              </div>
+            </div>
+            <div class="flip-back bg-gradient-to-br from-amber-50 to-rose-50 rounded-2xl p-5 border-2 border-amber-300 shadow-md flex flex-col items-center justify-center text-center">
+              <span class="text-2xl mb-2">🍯</span>
+              <p class="text-sm font-bold text-slate-700 leading-relaxed">
+                "As Pooh says: 'A day without a friend is like a pot without a single drop of honey left inside.'"
+              </p>
+              <span class="mt-4 text-xs text-amber-600 font-bold">Tap to flip back ↺</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="#chapter-5" class="px-6 py-2.5 rounded-full bg-sky-500 hover:bg-sky-600 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Apology Letter ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 5: TINKER BELL'S PARCHMENT APOLOGY LETTER         -->
+    <!-- ========================================================= -->
+    <section id="chapter-5" class="relative parchment-scroll rounded-[2.25rem] border-4 border-amber-300/90 p-6 sm:p-10 shadow-2xl">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-amber-200/70 text-amber-900 text-xs font-bold uppercase tracking-wider mb-2">
+            Chapter 5 • Tinker Bell's Parchment Scroll
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-amber-950">
+            My Complete Apology Letter 💌
+          </h2>
+        </div>
+
+        <div class="relative w-20 h-20 sm:w-24 sm:h-24 shrink-0 float-char">
+          <svg viewBox="0 0 120 120" class="w-full h-full overflow-visible">
+            <path d="M 55 58 Q 18 22 25 55 Q 32 72 55 66 Z" fill="#e0f2fe" opacity="0.85" stroke="#7dd3fc" stroke-width="1.5" />
+            <path d="M 65 58 Q 102 22 95 55 Q 88 72 65 66 Z" fill="#e0f2fe" opacity="0.85" stroke="#7dd3fc" stroke-width="1.5" />
+            <circle cx="60" cy="26" r="10" fill="#fde047" stroke="#ca8a04" stroke-width="1.8" />
+            <circle cx="60" cy="40" r="12" fill="#ffe5d4" stroke="#ca8a04" stroke-width="1.8" />
+            <circle cx="56" cy="39" r="1.8" fill="#1e293b" />
+            <circle cx="64" cy="39" r="1.8" fill="#1e293b" />
+            <path d="M 57 44 Q 60 47 63 44" fill="none" stroke="#e11d48" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M 48 54 L 72 54 L 78 82 L 66 76 L 60 84 L 54 76 L 42 82 Z" fill="#84cc16" stroke="#4d7c0f" stroke-width="1.8" />
+            <line x1="74" y1="58" x2="104" y2="38" stroke="#fef08a" stroke-width="2.5" stroke-linecap="round" />
+            <circle cx="106" cy="36" r="4" fill="#fbbf24" class="pixie-star" style="--sdur:1.6s;" />
+            <circle cx="94" cy="22" r="2.8" fill="#fde047" class="pixie-star" style="--sdur:2.1s; --sdelay:0.4s;" />
+            <circle cx="112" cy="52" r="2.5" fill="#fef08a" class="pixie-star" style="--sdur:1.9s; --sdelay:0.8s;" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="relative bg-white/75 rounded-2xl border-2 border-amber-200/80 p-5 sm:p-7 shadow-inner">
+        <p id="letter-salutation" class="handwritten text-2xl sm:text-3xl font-bold text-rose-700 mb-3">
+          Dearest You,
+        </p>
+
+        <div id="letter-body" class="space-y-3.5 text-slate-700 text-sm sm:text-base font-semibold leading-relaxed whitespace-pre-line">I know I have made a huge mistake and hurt you. I know my mistake might be unforgivable, but still, I am begging you. Can't you forgive me? Can't you find it in your heart to forgive me? I don't even know whether I deserve your forgiveness. Maybe I deserve to be ignored by you. But even then, I am asking you, isn't there any way you could give me just one more chance?
+
+You may leave the university, but please don't leave my life. Please. I promise I will never complain about anything again. Whenever you are upset, I end up hurting even more than you do.
+
+I really can't take this anymore. Please forgive me. Just this once. I genuinely didn't understand that things would become this serious. It's my fault. I am such an idiot. I have accepted that I have no brain at all, that there is simply nothing inside my head.
+
+You told me not to message you, and now I don't even have the courage to text you anymore. You also said you wouldn't read any more long messages from me, and I accepted that. I won't send another long message, I promise. But I can at least send you the link, can't I? You never told me not to send the link. I know I was late in sending it, and I am sorry for that. You only matter in here.
+
+Please forgive me. Please meet me. I promise I won't do anything like this ever again.
+
+You said it depends on your mood. That's okay. Take your time, but please don't take too long. Honestly, I am not doing well anymore. You know what? Change your mood into killing mode and just kill me. That would be better, at least I wouldn't have to suffer like this, little by little, anymore.
+
+Every single moment, I keep thinking about the huge mistake I made and how badly I hurt you. Now I am suffering from the consequences of my own actions. When you don't talk to me, it keeps bothering me and hurting me constantly.
+
+Please forgive me. I will do whatever you say. Please, just forgive me this one last time. Human beings are a mixture of forgiveness, mistakes, and imperfections. I am no exception.
+
+Whatever punishment you give me for my mistake, I will accept it without complaining. But being left without a word like this is something I cannot bear. I could never handle it before, and I still cannot.
+
+If you can, please forgive me.
+
+I need you. I don't know how to go on without you. I want you in my life for as long as I live. You can scold me, hit me, even throw me into a river, but I would still want you. Because you are the one I love. You are my dearest person, a piece of my heart. If I could, I would place you above my head and keep you there.
+
+At the end of the day, all I want is you. No matter what happens, I would do anything to make you let go of your anger and resentment. If you told me to stay outside all day or all night just so you could forgive me, I would do it. You are that important to me.
+
+I admit that I react emotionally sometimes, and that is my mistake. You have tolerated so much from me, and I am genuinely grateful for that.
+
+If you can, please forgive me. I promise this will never happen again. I am sorry, I am so, so sorry. Take your time, but please don't take too long. I really cannot handle this anymore. Please.
+
+And honestly, being killed would be a better idea than being ignored like this. 🥴 This time, it was my mistake. I accept whatever comes my way.
+
+Do whatever you want with me, give me whatever punishment you think I deserve, but please, at least meet me once. That's all I am asking for.</div>
+
+        <p id="letter-signoff" class="handwritten text-2xl sm:text-3xl font-bold text-amber-900 mt-5 text-right">
+          Always yours, with all my heart ❤️
+        </p>
+
+        <div class="mt-5 pt-4 border-t border-amber-200/70 flex flex-wrap items-center justify-between gap-2">
+          <span class="text-xs text-amber-800/80 font-semibold">
+            ✨ Want to rewrite this in your own words?
+          </span>
+          <button id="btn-edit-letter-inline" class="px-4 py-1.5 rounded-full bg-amber-500 hover:bg-amber-600 text-white text-xs font-bold shadow transition-all cursor-pointer">
+            ✏️ Edit Apology Letter
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="#chapter-6" class="px-6 py-2.5 rounded-full bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Genie Wishes ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 6: 3 GENIE PEACE OFFERINGS / WISHES               -->
+    <!-- ========================================================= -->
+    <section id="chapter-6" class="bg-gradient-to-br from-[#231942] to-[#3c2a6e] rounded-[2.25rem] border-2 border-amber-300/40 p-6 sm:p-8 text-white shadow-2xl">
+      <div class="text-center max-w-lg mx-auto mb-6">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/20 border border-amber-300/40 text-amber-200 text-xs font-bold uppercase tracking-wider mb-2">
+          Chapter 6 • Genie's Peace-Offering Lamp
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-amber-200">
+          Pick Your Apology Wishes 🪔✨
+        </h2>
+        <p class="text-xs sm:text-sm text-purple-200 mt-1 font-medium">
+          Tap any (or all!) of these real-life peace offerings below—I owe you!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        
+        <button class="wish-card text-left bg-white/10 hover:bg-white/15 border-2 border-white/20 rounded-2xl p-5 transition-all hover:-translate-y-1 active:scale-95 cursor-pointer flex flex-col justify-between" data-wish="You Can Kill Me ⚔️ (Full Dramatic Surrender)">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-rose-500/30 border border-rose-300/40 flex items-center justify-center text-2xl mb-3">
+              ⚔️
+            </div>
+            <h3 class="text-lg font-bold text-rose-200">1. You Can Kill Me</h3>
+            <p class="text-xs text-purple-100/85 mt-1.5 leading-relaxed">
+              Full dramatic surrender! I accept my fate completely—no running away, no excuses.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="wish-status text-xs font-bold text-amber-300">Tap to claim →</span>
+            <span class="wish-check hidden text-emerald-300 font-bold text-sm">Claimed ✓</span>
+          </div>
+        </button>
+
+        <button class="wish-card text-left bg-white/10 hover:bg-white/15 border-2 border-white/20 rounded-2xl p-5 transition-all hover:-translate-y-1 active:scale-95 cursor-pointer flex flex-col justify-between" data-wish="Luckin Coffee Treat ☕ (Any Drink You Want!)">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-sky-500/30 border border-sky-300/40 flex items-center justify-center text-2xl mb-3">
+              🦌☕
+            </div>
+            <h3 class="text-lg font-bold text-sky-200">2. Luckin Coffee Treat</h3>
+            <p class="text-xs text-purple-100/85 mt-1.5 leading-relaxed">
+              Coconut Latte, Velvet Latte, or whatever your favorite order is—100% on me!
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="wish-status text-xs font-bold text-amber-300">Tap to claim →</span>
+            <span class="wish-check hidden text-emerald-300 font-bold text-sm">Claimed ✓</span>
+          </div>
+        </button>
+
+        <button class="wish-card text-left bg-white/10 hover:bg-white/15 border-2 border-white/20 rounded-2xl p-5 transition-all hover:-translate-y-1 active:scale-95 cursor-pointer flex flex-col justify-between" data-wish="A Walk With Me 🚶‍♂️🌸 (Quality Time Together)">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/30 border border-emerald-300/40 flex items-center justify-center text-2xl mb-3">
+              🚶‍♂️🌸
+            </div>
+            <h3 class="text-lg font-bold text-emerald-200">3. A Walk With Me</h3>
+            <p class="text-xs text-purple-100/85 mt-1.5 leading-relaxed">
+              Just the two of us taking a peaceful walk, talking, and enjoying each other's company.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="wish-status text-xs font-bold text-amber-300">Tap to claim →</span>
+            <span class="wish-check hidden text-emerald-300 font-bold text-sm">Claimed ✓</span>
+          </div>
+        </button>
+
+      </div>
+
+      <div id="wish-feedback-box" class="hidden mt-5 bg-amber-400/15 border border-amber-300/40 rounded-2xl p-4 text-center">
+        <p id="wish-reaction-text" class="text-sm font-bold text-amber-200"></p>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="#chapter-7" class="px-6 py-2.5 rounded-full bg-purple-500 hover:bg-purple-600 text-white font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 inline-block">
+          Continue to Finale ↓
+        </a>
+      </div>
+    </section>
+
+    <!-- ========================================================= -->
+    <!-- CHAPTER 7: CINDERELLA CASTLE FINALE & CAPTION             -->
+    <!-- ========================================================= -->
+    <section id="chapter-7" class="relative bg-gradient-to-b from-[#1e1b4b] via-[#311042] to-[#4c0519] rounded-[2.25rem] border-4 border-pink-300/40 p-6 sm:p-10 text-center text-white shadow-2xl overflow-hidden">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-pink-500/25 border border-pink-300/40 text-pink-200 text-xs font-bold uppercase tracking-wider mb-3">
+        Chapter 7 • The Magic Kingdom Finale 🏰✨
+      </span>
+
+      <h2 class="text-2xl sm:text-4xl font-bold text-pink-100 mb-2">
+        Can We Start Fresh? 🏰✨
+      </h2>
+      <p id="finale-subtitle" class="text-xs sm:text-sm text-pink-200/85 max-w-md mx-auto mb-4">
+        No pressure at all—whenever you're ready, let me know what your heart says.
+      </p>
+
+      <div class="relative w-full max-w-sm mx-auto h-52 sm:h-60 my-2">
+        <svg id="castle-svg" viewBox="0 0 320 220" class="w-full h-full overflow-visible">
+          <g id="castle-fireworks" class="hidden">
+            <g transform="translate(65, 50)" class="firework-ring">
+              <circle cx="0" cy="0" r="24" fill="none" stroke="#fbbf24" stroke-width="3" stroke-dasharray="4 6" />
+              <circle cx="0" cy="0" r="14" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-dasharray="3 5" />
+            </g>
+            <g transform="translate(255, 45)" class="firework-ring">
+              <circle cx="0" cy="0" r="26" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4 6" />
+              <circle cx="0" cy="0" r="15" fill="none" stroke="#fde047" stroke-width="2.5" stroke-dasharray="3 5" />
+            </g>
+            <g transform="translate(160, 28)" class="firework-ring">
+              <circle cx="0" cy="0" r="22" fill="none" stroke="#fb7185" stroke-width="3" stroke-dasharray="4 6" />
+            </g>
+          </g>
+
+          <rect x="75" y="145" width="170" height="60" rx="4" fill="#fbcfe8" stroke="#be185d" stroke-width="2" />
+          <rect x="65" y="110" width="28" height="95" fill="#f9a8d4" stroke="#be185d" stroke-width="2" />
+          <polygon points="61,110 79,72 97,110" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.8" />
+          <rect x="227" y="110" width="28" height="95" fill="#f9a8d4" stroke="#be185d" stroke-width="2" />
+          <polygon points="223,110 241,72 259,110" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.8" />
+          <rect x="105" y="90" width="32" height="115" fill="#fdf2f8" stroke="#be185d" stroke-width="2" />
+          <polygon points="101,90 121,48 141,90" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.8" />
+          <rect x="183" y="90" width="32" height="115" fill="#fdf2f8" stroke="#be185d" stroke-width="2" />
+          <polygon points="179,90 199,48 219,90" fill="#2563eb" stroke="#1e3a8a" stroke-width="1.8" />
+          <rect x="140" y="72" width="40" height="133" fill="#ffffff" stroke="#be185d" stroke-width="2" />
+          <polygon points="135,72 160,18 185,72" fill="#1d4ed8" stroke="#1e3a8a" stroke-width="2" />
+          <line x1="160" y1="18" x2="160" y2="6" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" />
+          <path d="M 142 205 L 142 172 A 18 18 0 0 1 178 172 L 178 205 Z" fill="#831843" />
+          <circle cx="160" cy="112" r="7" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" />
+          <rect x="116" y="112" width="8" height="14" rx="4" fill="#fef08a" />
+          <rect x="196" y="112" width="8" height="14" rx="4" fill="#fef08a" />
+        </svg>
+      </div>
+
+      <div id="mad-reaction-banner" class="hidden max-w-md mx-auto mb-4 bg-white/15 backdrop-blur-md border border-pink-200/40 rounded-2xl px-4 py-3 text-pink-100 text-sm font-bold">
+        "That's completely fair 🥺 Take your time—I'll be right here with Luckin Coffee whenever you're ready!"
+      </div>
+
+      <!-- Celebratory Photo Reveal Card with Exact Caption -->
+      <div id="forgiven-celebration-card" class="hidden max-w-sm mx-auto my-5 bg-white text-slate-800 rounded-3xl p-4 border-4 border-amber-300 shadow-[0_0_40px_rgba(251,191,36,0.55)]">
+        <div class="inline-block px-3 py-1 rounded-full bg-rose-100 text-rose-600 text-xs font-bold mb-2">
+          🌸 Flowers Blooming For Us 🌸
+        </div>
+        <div class="relative w-full h-60 rounded-2xl overflow-hidden bg-pink-50 border-2 border-pink-200">
+          <img id="forgiven-photo-img" src="https://placehold.co/500x400/ffe4e6/e11d48?text=Our+Happy+Ending+%E2%9D%A4%EF%B8%8F" alt="Celebration Photo" class="w-full h-full object-cover" />
+          <label class="absolute bottom-2 right-2 px-3 py-1.5 rounded-full bg-rose-600/90 hover:bg-rose-600 text-white text-xs font-bold shadow cursor-pointer transition-all">
+            📸 Change Celebration Photo
+            <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="forgiven" />
+          </label>
+        </div>
+        <h3 class="handwritten text-3xl font-bold text-rose-600 mt-3">
+          this we have long way to gooo 🥰❤️
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-600 font-semibold mt-1">
+          Thank you for forgiving me! I promise to cherish every step forward together.
+        </p>
+      </div>
+
+      <div id="finale-buttons" class="flex flex-wrap items-center justify-center gap-4 mt-4">
+        <button id="btn-forgive-finale" class="px-7 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-500 hover:from-rose-400 hover:to-amber-400 text-white font-bold text-base sm:text-lg shadow-[0_10px_28px_rgba(244,63,94,0.55)] hover:scale-105 active:scale-95 transition-all cursor-pointer">
+          I Forgive You ❤️
+        </button>
+
+        <button id="btn-still-mad-finale" class="px-5 py-3.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-pink-100 font-bold text-sm sm:text-base transition-all cursor-pointer">
+          Still a Little Mad 🥺
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- CUSTOMIZER MODAL                                          -->
+  <!-- ========================================================= -->
+  <div id="customizer-modal" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border-4 border-amber-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+        <h3 class="text-xl font-bold text-slate-800">📸 Customize Photos & Letter</h3>
+        <button id="btn-close-modal" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-rose-100 text-slate-600 hover:text-rose-600 font-bold flex items-center justify-center cursor-pointer">
+          ✕
+        </button>
+      </div>
+
+      <div class="space-y-4 mt-4 text-left">
+        <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 space-y-2.5">
+          <p class="text-xs font-bold uppercase tracking-wider text-amber-800">1. Edit Your Apology Letter</p>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Greeting</label>
+            <input id="modal-salutation" type="text" class="w-full px-3 py-2 text-sm rounded-xl border border-amber-200 bg-white font-semibold" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Apology Message</label>
+            <textarea id="modal-letter-body" rows="5" class="w-full px-3 py-2 text-sm rounded-xl border border-amber-200 bg-white font-medium leading-relaxed"></textarea>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Sign-Off</label>
+            <input id="modal-signoff" type="text" class="w-full px-3 py-2 text-sm rounded-xl border border-amber-200 bg-white font-semibold" />
+          </div>
+        </div>
+
+        <div class="bg-pink-50/70 p-4 rounded-2xl border border-pink-200 space-y-3">
+          <p class="text-xs font-bold uppercase tracking-wider text-rose-700">2. Upload Your Pictures</p>
+          <div class="grid grid-cols-2 gap-2.5">
+            <label class="px-3 py-2.5 rounded-xl bg-white border border-pink-200 hover:border-rose-400 text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm">
+              <span>🖼️ Photo 1</span>
+              <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="0" />
+            </label>
+            <label class="px-3 py-2.5 rounded-xl bg-white border border-pink-200 hover:border-rose-400 text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm">
+              <span>🖼️ Photo 2</span>
+              <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="1" />
+            </label>
+            <label class="px-3 py-2.5 rounded-xl bg-white border border-pink-200 hover:border-rose-400 text-xs font-bold text-slate-700 flex items-center justify-center gap-1.5 cursor-pointer shadow-sm">
+              <span>🖼️ Photo 3</span>
+              <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="2" />
+            </label>
+            <label class="px-3 py-2.5 rounded-xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer shadow-sm">
+              <span>🌸 Celebration Photo</span>
+              <input type="file" accept="image/*" class="hidden photo-upload-input" data-slot="forgiven" />
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end gap-2">
+        <button id="btn-save-customizer" class="w-full py-3 rounded-full bg-gradient-to-r from-rose-500 to-amber-500 hover:from-rose-600 hover:to-amber-600 text-white font-bold text-sm shadow-lg cursor-pointer">
+          Save Changes ✨
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Starfield
+    const starfieldContainer = document.getElementById('starfield-container');
+    for (let i = 0; i < 65; i++) {
+      const star = document.createElement('div');
+      star.className = 'star-dot';
+      const size = Math.random() * 2.6 + 1.2;
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${Math.random() * 100}%`;
+      star.style.top = `${Math.random() * 100}%`;
+      star.style.setProperty('--dur', `${2.2 + Math.random() * 3}s`);
+      star.style.setProperty('--delay', `${Math.random() * 3}s`);
+      starfieldContainer.appendChild(star);
+    }
+
+    // Web Audio Synthesizer
+    let musicPlaying = false;
+    let audioCtx = null;
+    let melodyTimer = null;
+    const lullabyNotes = [523.25, 659.25, 783.99, 1046.50, 987.77, 783.99, 659.25, 587.33, 698.46, 880.00, 783.99, 659.25];
+    let noteIndex = 0;
+
+    function playChime(freq, duration = 0.65, vol = 0.08) {
+      try {
+        if (!audioCtx) {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          if (AC) audioCtx = new AC();
+        }
+        if (!audioCtx) return;
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(vol, audioCtx.currentTime + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration + 0.05);
+      } catch (e) {}
+    }
+
+    const btnMusic = document.getElementById('btn-music');
+    const musicIcon = document.getElementById('music-icon');
+    const musicLabel = document.getElementById('music-label');
+
+    btnMusic.addEventListener('click', () => {
+      musicPlaying = !musicPlaying;
+      if (musicPlaying) {
+        musicIcon.textContent = '🎶';
+        musicLabel.textContent = 'Music: On';
+        playChime(lullabyNotes[0]);
+        noteIndex = 1;
+        melodyTimer = setInterval(() => {
+          playChime(lullabyNotes[noteIndex % lullabyNotes.length]);
+          noteIndex++;
+        }, 680);
+      } else {
+        musicIcon.textContent = '🎵';
+        musicLabel.textContent = 'Music: Off';
+        if (melodyTimer) clearInterval(melodyTimer);
+      }
+    });
+
+    // Mickey Mouse interaction
+    const mickeyBtn = document.getElementById('mickey-btn');
+    const mickeySpeech = document.getElementById('mickey-speech');
+    const mickeyQuotes = [
+      '"Hi... I know I made a mistake that shouldn\'t have happened. Tap me to open my heart 🥺🌹"',
+      '"I brought you this rose as a peace offering... please continue down to see our apology story 💕"',
+      '"You mean everything to me, and I\'m truly sorry for letting you down 🥺✨"'
+    ];
+    let mickeyQuoteIdx = 0;
+    mickeyBtn.addEventListener('click', () => {
+      playChime(659.25, 0.35, 0.12);
+      mickeyBtn.classList.remove('animate-bounce-click');
+      void mickeyBtn.offsetWidth;
+      mickeyBtn.classList.add('animate-bounce-click');
+      mickeyQuoteIdx = (mickeyQuoteIdx + 1) % mickeyQuotes.length;
+      mickeySpeech.textContent = mickeyQuotes[mickeyQuoteIdx];
+    });
+
+    // Chapter 2: Flying Heart Shooting Mini-Game
+    const arena = document.getElementById('heart-game-arena');
+    const heartCountEl = document.getElementById('heart-count');
+    const gameWinMsg = document.getElementById('game-win-msg');
+    let heartsCollected = 0;
+    const totalHeartsToWin = 5;
+
+    function spawnFlyingHeart() {
+      if (heartsCollected >= totalHeartsToWin) return;
+      const h = document.createElement('div');
+      h.className = 'flying-heart text-3xl sm:text-4xl';
+      h.innerHTML = '❤️';
+      h.style.top = `${15 + Math.random() * 65}%`;
+      h.style.animationDuration = `${3 + Math.random() * 2}s`;
+
+      h.addEventListener('click', () => {
+        playChime(1046.5, 0.3, 0.12);
+        h.remove();
+        heartsCollected++;
+        heartCountEl.textContent = heartsCollected;
+        if (heartsCollected >= totalHeartsToWin) {
+          gameWinMsg.classList.remove('hidden');
+        }
+      });
+      arena.appendChild(h);
+      setTimeout(() => { if (h.parentNode) h.remove(); }, 5000);
+    }
+    setInterval(spawnFlyingHeart, 900);
+    for (let i = 0; i < 2; i++) spawnFlyingHeart();
+
+    // Flip Cards & Photo Uploads
+    document.querySelectorAll('.memory-card').forEach(card => {
+      card.addEventListener('click', () => {
+        playChime(783.99, 0.25, 0.08);
+        card.classList.toggle('flipped');
+      });
+    });
+
+    function loadSavedCustomizations() {
+      try {
+        ['0', '1', '2'].forEach(slot => {
+          const savedImg = localStorage.getItem(`disney_apology_photo_${slot}`);
+          if (savedImg) {
+            const imgEl = document.getElementById(`photo-img-${slot}`);
+            if (imgEl) imgEl.src = savedImg;
+          }
+        });
+        const savedForgivenImg = localStorage.getItem('disney_apology_photo_forgiven');
+        if (savedForgivenImg) document.getElementById('forgiven-photo-img').src = savedForgivenImg;
+
+        const savedSal = localStorage.getItem('disney_apology_salutation');
+        const savedBody = localStorage.getItem('disney_apology_body');
+        const savedSign = localStorage.getItem('disney_apology_signoff');
+        if (savedSal) document.getElementById('letter-salutation').textContent = savedSal;
+        if (savedBody) document.getElementById('letter-body').textContent = savedBody;
+        if (savedSign) document.getElementById('letter-signoff').textContent = savedSign;
+      } catch (e) {}
+    }
+    loadSavedCustomizations();
+
+    document.querySelectorAll('.photo-upload-input').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const slot = e.target.getAttribute('data-slot');
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const dataUrl = evt.target.result;
+          if (slot === 'forgiven') {
+            document.getElementById('forgiven-photo-img').src = dataUrl;
+          } else {
+            const imgEl = document.getElementById(`photo-img-${slot}`);
+            if (imgEl) imgEl.src = dataUrl;
+          }
+          try { localStorage.setItem(`disney_apology_photo_${slot}`, dataUrl); } catch (err) {}
+          playChime(1046.5, 0.35, 0.1);
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+
+    // Customizer Modal
+    const customizerModal = document.getElementById('customizer-modal');
+    const btnOpenCustomizer = document.getElementById('btn-open-customizer');
+    const btnEditLetterInline = document.getElementById('btn-edit-letter-inline');
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnSaveCustomizer = document.getElementById('btn-save-customizer');
+    const modalSalutation = document.getElementById('modal-salutation');
+    const modalLetterBody = document.getElementById('modal-letter-body');
+    const modalSignoff = document.getElementById('modal-signoff');
+
+    function openCustomizer() {
+      modalSalutation.value = document.getElementById('letter-salutation').textContent.trim();
+      modalLetterBody.value = document.getElementById('letter-body').textContent.trim();
+      modalSignoff.value = document.getElementById('letter-signoff').textContent.trim();
+      customizerModal.classList.remove('hidden');
+    }
+    btnOpenCustomizer.addEventListener('click', openCustomizer);
+    btnEditLetterInline.addEventListener('click', openCustomizer);
+    btnCloseModal.addEventListener('click', () => customizerModal.classList.add('hidden'));
+
+    btnSaveCustomizer.addEventListener('click', () => {
+      const sal = modalSalutation.value.trim();
+      const body = modalLetterBody.value.trim();
+      const sign = modalSignoff.value.trim();
+      if (sal) document.getElementById('letter-salutation').textContent = sal;
+      if (body) document.getElementById('letter-body').textContent = body;
+      if (sign) document.getElementById('letter-signoff').textContent = sign;
+      try {
+        localStorage.setItem('disney_apology_salutation', sal);
+        localStorage.setItem('disney_apology_body', body);
+        localStorage.setItem('disney_apology_signoff', sign);
+      } catch (e) {}
+      customizerModal.classList.add('hidden');
+      playChime(880, 0.4, 0.12);
+    });
+
+    // Genie Wishes
+    const wishCards = document.querySelectorAll('.wish-card');
+    const wishFeedbackBox = document.getElementById('wish-feedback-box');
+    const wishReactionText = document.getElementById('wish-reaction-text');
+    const claimedWishes = new Set();
+
+    wishCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const wishName = card.getAttribute('data-wish');
+        playChime(987.77, 0.35, 0.12);
+        if (claimedWishes.has(wishName)) {
+          claimedWishes.delete(wishName);
+          card.classList.remove('border-amber-300', 'bg-amber-400/20');
+          card.querySelector('.wish-status').classList.remove('hidden');
+          card.querySelector('.wish-check').classList.add('hidden');
+        } else {
+          claimedWishes.add(wishName);
+          card.classList.add('border-amber-300', 'bg-amber-400/20');
+          card.querySelector('.wish-status').classList.add('hidden');
+          card.querySelector('.wish-check').classList.remove('hidden');
+        }
+        if (claimedWishes.size > 0) {
+          wishFeedbackBox.classList.remove('hidden');
+          wishReactionText.textContent = `✨ Genie Wish Granted: ${Array.from(claimedWishes).join(' • ')}`;
+        } else {
+          wishFeedbackBox.classList.add('hidden');
+        }
+      });
+    });
+
+    // Cinderella Castle Finale & Blooming Flowers
+    const btnForgiveFinale = document.getElementById('btn-forgive-finale');
+    const btnStillMadFinale = document.getElementById('btn-still-mad-finale');
+    const madReactionBanner = document.getElementById('mad-reaction-banner');
+    const forgivenCelebrationCard = document.getElementById('forgiven-celebration-card');
+    const castleFireworks = document.getElementById('castle-fireworks');
+    const flowerSkyLayer = document.getElementById('flower-sky-layer');
+
+    const madReplies = [
+      '"That\'s completely fair 🥺 Take your time—I\'ll be right here with Luckin Coffee whenever you\'re ready!"',
+      '"I deserve that! ⚔️ Still sending you hugs and waiting patiently for our walk 🌸"',
+      '"Mickey & Stitch both agree I messed up 🥺 Whenever you\'re ready, my heart is yours ❤️"'
+    ];
+    let madClickCount = 0;
+
+    btnStillMadFinale.addEventListener('click', () => {
+      playChime(440, 0.3, 0.1);
+      madReactionBanner.classList.remove('hidden');
+      madReactionBanner.textContent = madReplies[madClickCount % madReplies.length];
+      madClickCount++;
+      const growScale = Math.min(1.2, 1 + madClickCount * 0.05);
+      btnForgiveFinale.style.transform = `scale(${growScale})`;
+    });
+
+    btnForgiveFinale.addEventListener('click', () => {
+      [523.25, 659.25, 783.99, 1046.5].forEach((freq, idx) => {
+        setTimeout(() => playChime(freq, 0.55, 0.14), idx * 110);
+      });
+      madReactionBanner.classList.add('hidden');
+      castleFireworks.classList.remove('hidden');
+      forgivenCelebrationCard.classList.remove('hidden');
+      btnForgiveFinale.textContent = 'Thank You For Forgiving Me! 🌸❤️';
+      bloomFlowersFromSky();
+    });
+
+    function bloomFlowersFromSky() {
+      const flowerSymbols = ['🌸', '🌹', '🌺', '🌷', '🌻', '🌼', '💮', '💐'];
+      for (let i = 0; i < 65; i++) {
+        setTimeout(() => {
+          const flower = document.createElement('div');
+          flower.className = 'blooming-flower text-2xl sm:text-3xl drop-shadow-md';
+          flower.textContent = flowerSymbols[Math.floor(Math.random() * flowerSymbols.length)];
+          flower.style.left = `${Math.random() * 96}vw`;
+          flower.style.setProperty('--fdur', `${3.8 + Math.random() * 2.8}s`);
+          flowerSkyLayer.appendChild(flower);
+          setTimeout(() => flower.remove(), 6800);
+        }, i * 65);
+      }
+    }
+  </script>
+</body>
+</html>
+```
